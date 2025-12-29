@@ -16,10 +16,23 @@ mock.onPost(`/sign-in`).reply((config) => {
     if (user) {
         return new Promise(function (resolve) {
             setTimeout(function () {
+                // Return full hierarchical user object
+                const { password, ...userWithoutPassword } = user
                 resolve([
                     201,
                     {
-                        user,
+                        user: {
+                            userId: user.id,
+                            userName: user.userName,
+                            email: user.email,
+                            avatar: user.avatar,
+                            authority: user.authority,
+                            role: user.role,
+                            managerId: user.managerId,
+                            managerName: user.managerName,
+                            phone: user.phone,
+                            status: user.status,
+                        },
                         token: 'wVYrxaeNa9OxdnULvde1Au5m5w63',
                     },
                 ])

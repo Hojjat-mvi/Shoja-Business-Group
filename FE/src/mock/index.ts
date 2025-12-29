@@ -1,5 +1,6 @@
-import { mock } from './MockAdapter'
 import './fakeApi/authFakeApi'
 import './fakeApi/commonFakeApi'
-
-mock.onAny().passThrough()
+import './fakeApi/userFakeApi'
+import './fakeApi/contractFakeApi'
+import './fakeApi/propertyFakeApi'
+import './fakeApi/notificationFakeApi'

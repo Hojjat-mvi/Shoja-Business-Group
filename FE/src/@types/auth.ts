@@ -1,3 +1,6 @@
+import type { UserRole } from '@/constants/roles.constant'
+import type { UserStatus } from './user'
+
 export type SignInCredential = {
     email: string
     password: string
@@ -42,7 +45,12 @@ export type User = {
     avatar?: string | null
     userName?: string | null
     email?: string | null
-    authority?: string[]
+    authority?: string[] // Legacy - kept for backward compatibility
+    role?: UserRole // New hierarchical role
+    managerId?: string | null // Parent in hierarchy
+    managerName?: string
+    phone?: string
+    status?: UserStatus
 }
 
 export type Token = {
@@ -53,4 +61,24 @@ export type Token = {
 export type OauthSignInCallbackPayload = {
     onSignIn: (tokens: Token, user?: User) => void
     redirect: () => void
+}
+
+export interface UserApprovalRequest {
+    id: string
+    userData: {
+        userName: string
+        email: string
+        phone?: string
+        role?: UserRole
+        managerId?: string
+        managerName?: string
+    }
+    requestedBy: string
+    requestedByName: string
+    status: 'pending' | 'approved' | 'rejected'
+    createdAt: string
+    reviewedBy?: string
+    reviewedByName?: string
+    reviewedAt?: string
+    reviewNotes?: string
 }

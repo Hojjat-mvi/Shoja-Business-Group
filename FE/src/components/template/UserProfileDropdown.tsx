@@ -13,6 +13,11 @@ type DropdownList = {
 }
 
 const dropdownItemList: DropdownList[] = [
+    {
+        label: 'پروفایل',
+        path: '/profile',
+        icon: <PiUserDuotone />,
+    },
 ]
 
 const _UserDropdown = () => {

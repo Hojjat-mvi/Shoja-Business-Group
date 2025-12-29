@@ -381,7 +381,7 @@ function _DataTable<T>(
                     total={total}
                     onChange={handlePaginationChange}
                 />
-                <div style={{ minWidth: 130 }}>
+                <div style={{ minWidth: 150, maxWidth: 150 }}>
                     <Select
                         size="sm"
                         menuPlacement="top"
@@ -391,6 +391,7 @@ function _DataTable<T>(
                         )}
                         options={pageSizeOption}
                         onChange={(option) => handleSelectChange(option?.value)}
+                        className="text-sm"
                     />
                 </div>
             </div>

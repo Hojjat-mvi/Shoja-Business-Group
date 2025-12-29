@@ -5,10 +5,7 @@ import { AuthProvider } from '@/auth'
 import Views from '@/views'
 import appConfig from './configs/app.config'
 import './locales'
-
-if (appConfig.enableMock) {
-    import('./mock')
-}
+import './mock' // Import mock synchronously before any API calls
 
 function App() {
     return (
